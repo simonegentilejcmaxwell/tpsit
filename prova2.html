@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagina di Notizie</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      .topnav {
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .topnav a.active {
+        background-color: #04aa6d;
+        color: white;
+      }
+
+      .topnav .icon {
+        display: none;
+      }
+
+      @media screen and (max-width: 600px) {
+        .topnav a:not(:first-child) {
+          display: none;
+        }
+        .topnav a.icon {
+          float: right;
+          display: block;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .topnav.responsive {
+          position: relative;
+        }
+        .topnav.responsive .icon {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        .topnav.responsive a {
+          float: none;
+          display: block;
+          text-align: left;
+        }
+      }
+
+      .container {
+        width: 90%;
+        margin: 20px auto;
+      }
+
+      .news-item {
+        display: flex;
+        margin: 20px 0;
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #fff;
+      }
+
+      .news-item:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .news-item img {
+        max-width: 200px;
+        max-height: 150px;
+        border-radius: 8px;
+        margin: auto;
+      }
+
+      .news-text {
+        flex: 1;
+        padding: 10px;
+      }
+
+      .news-text h3 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      .news-text p {
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="#home" class="active">Home</a>
+      <a href="#news">News</a>
+      <a href="https://github.com/simonegentilejcmaxwell/tpsit"
+        >Esercizi Html/CSS</a
+      >
+      <a
+        href="https://github.com/simonegentilejcmaxwell/tpsit/blob/main/primapagina.html"
+        >Autore Marco</a
+      >
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+    </script>
+    <div class="container">
+      <h2>Notizie</h2>
+
+      <div class="news-item">
+        <div class="news-img">
+          <img src="Ariane_5_(mock-up).jpg" alt="Ariane 5" />
+        </div>
+        <div class="news-text">
+          <h3>Circa 370 milioni di dollari</h3>
+          <p>
+            Il lancio inaugurale del razzo Ariane 5 dell'Agenzia Spaziale
+            Europea fallì a causa di un bug nel software...
+          </p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img">
+          <img src="Mars_Climate_Orbiter_2.jpg" alt="Mars Climate Orbiter" />
+        </div>
+        <div class="news-text">
+          <h3>Circa 193 milioni di dollari</h3>
+          <p>
+            Un errore nel software del Mars Climate Orbiter causò la distruzione
+            della sonda quando entrò troppo bassa...
+          </p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img">
+          <img src="knight_capital.jpg" alt="Knight Capital" />
+        </div>
+        <div class="news-text">
+          <h3>Circa 440 milioni di dollari in 45 minuti</h3>
+          <p>
+            Knight Capital perse 440 milioni di dollari in 45 minuti a causa di
+            un aggiornamento software difettoso...
+          </p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img">
+          <img src="Therac-25.jpg" alt="Therac-25" />
+        </div>
+        <div class="news-text">
+          <h3>Diverse vite umane</h3>
+          <p>
+            La macchina Therac-25 causò la morte di 5 persone a causa di un bug
+            nel software...
+          </p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img">
+          <img src="patriot_missil.jpg" alt="Patriot Missile" />
+        </div>
+        <div class="news-text">
+          <h3>Perdita di vite e milioni di dollari</h3>
+          <p>
+            Un errore nel sistema Patriot Missile causò il fallimento
+            nell'intercettazione di un missile Scud...
+          </p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img">
+          <img src="Millennium Bug.jpg"" alt=Millennium Bug" />
+        </div>
+        <div class="news-text">
+          <h3>Circa 100 miliardi di dollari in preparazione e mitigazione</h3>
+          <p>
+            Il Millennium Bug richiese enormi investimenti per prevenire il
+            collasso dei sistemi informatici...
+          </p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img">
+          <img src="Intel Pentium.jpg" alt="Intel Pentium" />
+        </div>
+        <div class="news-text">
+          <h3>Circa 475 milioni di dollari</h3>
+          <p>
+            Un bug nei processori Intel Pentium causò errori di calcolo e enormi
+            perdite finanziarie per l'azienda...
+          </p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img">
+          <img src="Tesla Model S.jpg" alt="Tesla Model S" />
+        </div>
+        <div class="news-text">
+          <h3>Perdita di un'auto</h3>
+          <p>
+            Un aggiornamento del software della Tesla Model S causò il blocco
+            dei freni e la perdita dell'auto...
+          </p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img">
+          <img src="AT&T.png" alt="AT&T" />
+        </div>
+        <div class="news-text">
+          <h3>Decine di milioni di dollari</h3>
+          <p>
+            Un bug nel sistema di commutazione di AT&T causò un blocco di 9 ore
+            con perdite finanziarie enormi...
+          </p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img">
+          <img src="Boeing 737 Max.jpg" alt="Boeing 737 Max" />
+        </div>
+        <div class="news-text">
+          <h3>Oltre 20 miliardi di dollari, molte vite perse</h3>
+          <p>
+            Il bug nel sistema MCAS del Boeing 737 Max causò incidenti mortali,
+            portando a gravi perdite per la Boeing...
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
