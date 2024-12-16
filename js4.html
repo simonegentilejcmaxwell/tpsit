@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trekking Dislivello</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 80%;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 20px;
+            background-image: url('https://www.google.com/imgres?q=monviso&imgurl=https%3A%2F%2Fwww.montagna.tv%2Fwp-content%2Fuploads%2F2021%2F04%2Fmountains-3111591_1920.jpg&imgrefurl=https%3A%2F%2Fwww.montagna.tv%2F178918%2Fmonviso%2F&docid=2DoCo6MZUbEpMM&tbnid=yJDkiB5nU_RgiM&vet=12ahUKEwj25ZrBtZqKAxUJ_rsIHeZeJCkQM3oECGcQAA..i&w=1920&h=1240&hcb=2&ved=2ahUKEwj25ZrBtZqKAxUJ_rsIHeZeJCkQM3oECGcQAA');
+            background-size: cover;
+            background-position: center;
+            border: none;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-image: url('https://www.google.com/imgres?q=monviso&imgurl=https%3A%2F%2Fstatic2-viaggi.corriereobjects.it%2Fwp-content%2Fuploads%2F2019%2F09%2Falba-monviso.jpg%3Fv%3D1569756000&imgrefurl=https%3A%2F%2Fviaggi.corriere.it%2Fitinerari-e-luoghi%2Fmonviso-tra-borghi-e-castelli%2F&docid=ZmLx7lQEUmKQ6M&tbnid=NyEMZV55O6BfnM&vet=12ahUKEwj25ZrBtZqKAxUJ_rsIHeZeJCkQM3oECH4QAA..i&w=4288&h=2848&hcb=2&ved=2ahUKEwj25ZrBtZqKAxUJ_rsIHeZeJCkQM3oECH4QAA');
+            background-color: rgba(0, 0, 0, 0.5);
+            background-blend-mode: overlay;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Calcolo del Dislivello del Trekking</h1>
+    
+    <label for="partenza">Altezza Punto di Partenza (m):</label>
+    <input type="number" id="partenza" placeholder="Es. 1000">
+    
+    <label for="pausa">Altezza Punto di Pausa (m):</label>
+    <input type="number" id="pausa" placeholder="Es. 1500">
+    
+    <label for="arrivo">Altezza Punto di Arrivo (m):</label>
+    <input type="number" id="arrivo" placeholder="Es. 2000">
+    
+    <button onclick="calcolaDislivello()">Calcola Dislivello</button>
+    
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+function calcolaDislivello() {
+    const partenza = parseFloat(document.getElementById("partenza").value);
+    const pausa = parseFloat(document.getElementById("pausa").value);
+    const arrivo = parseFloat(document.getElementById("arrivo").value);
+    
+    // Verifica se i valori inseriti sono validi
+    if (isNaN(partenza) || isNaN(pausa) || isNaN(arrivo)) {
+        document.getElementById("result").innerHTML = "Per favore inserisci tutte le altezze.";
+        return;
+    }
+
+    // Calcola il dislivello totale
+    const dislivelloTotale = Math.abs(arrivo - partenza) + Math.abs(pausa - partenza);
+    
+    // Mostra i risultati
+    document.getElementById("result").innerHTML = 
+        `Partenza: ${partenza} m<br>
+        Pausa: ${pausa} m<br>
+        Arrivo: ${arrivo} m<br>
+        Dislivello Totale: ${dislivelloTotale} m`;
+}
+</script>
+
+</body>
+</html>
