@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morra Bot - Sasso Carta Forbice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .gameContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .choices {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .icon {
+            font-size: 50px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        #out1, #out2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        .player, .bot {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .sezione {
+            margin: 30px;
+            text-align: center;
+        }
+        
+        .testoGiocatore {
+            font-size: 20px;
+            margin-bottom: 10px; 
+        }
+        .sceltaIconaGiocatore {
+            font-size: 70px;
+            margin-top: 10px; 
+        }
+        .sceltaIconaBot {
+            font-size: 70px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Morra Bot - Sasso Carta Forbice</h1>
+
+  
+    <div class="sezione gameContainer">
+        <p>Scelta del Giocatore:</p>
+    
+        <div id="out1" class="testoGiocatore"></div>
+        <div id="iconaGiocatore" class="sceltaIconaGiocatore"></div> <!-- Spostato qui l'icona -->
+        <div class="choices">
+            <i id="sasso" class="fas fa-hand-rock icon" onclick="gioca('sasso')"></i>
+            <i id="carta" class="fas fa-hand-paper icon" onclick="gioca('carta')"></i>
+            <i id="forbice" class="fas fa-hand-scissors icon" onclick="gioca('forbice')"></i>
+        </div>
+    </div>
+  
+    <div class="sezione gameContainer">
+        <p>Scelta del Morra Bot:</p>
+        <div id="iconaBot" class="sceltaIconaBot"></div>
+        <div class="bot">
+            <i id="botSasso" class="fas fa-hand-rock icon" style="visibility: hidden;"></i>
+            <i id="botCarta" class="fas fa-hand-paper icon" style="visibility: hidden;"></i>
+            <i id="botForbice" class="fas fa-hand-scissors icon" style="visibility: hidden;"></i>
+        </div>
+        <p id="out2"></p>
+    </div>
+
+    <button onclick="TiroMorraBot()">START TIRO</button>
+
+    <script>
+        let numeroCasuale = 0;
+        let sceltaUtente = "";
+        let morraArray = ["sasso", "carta", "forbice"];
+
+        function TiroMorraBot() {
+            numeroCasuale = Math.floor(Math.random() * 3);
+            
+            document.getElementById("botSasso").style.visibility = "hidden";
+            document.getElementById("botCarta").style.visibility = "hidden";
+            document.getElementById("botForbice").style.visibility = "hidden";
+            document.getElementById("iconaBot").innerHTML = "";
+            document.getElementById("out2").innerHTML = "Morra Bot sta scegliendo...";
+
+            
+            setTimeout(() => {
+                
+                mostraIconaBot(morraArray[numeroCasuale]);
+
+                
+                calcolaVincitore();
+            }, 1000); 
+        }
+
+        
+        function gioca(scelta) {
+            sceltaUtente = scelta;
+            document.getElementById("out1").innerHTML = "Hai scelto: " + sceltaUtente;
+            mostraIconaGiocatore(scelta);
+        }
+
+        
+        function mostraIconaGiocatore(giocatoreScelta) {
+            let iconaGiocatore = document.getElementById("iconaGiocatore");
+            iconaGiocatore.innerHTML = "";
+
+            if (giocatoreScelta === "sasso") {
+                iconaGiocatore.innerHTML = `<i class="fas fa-hand-rock"></i>`;
+            } else if (giocatoreScelta === "carta") {
+                iconaGiocatore.innerHTML = `<i class="fas fa-hand-paper"></i>`;
+            } else if (giocatoreScelta === "forbice") {
+                iconaGiocatore.innerHTML = `<i class="fas fa-hand-scissors"></i>`;
+            }
+        }
+
+        
+        function mostraIconaBot(botScelta) {
+            let iconaBot = document.getElementById("iconaBot");
+            iconaBot.innerHTML = "";
+
+            if (botScelta === "sasso") {
+                document.getElementById("botSasso").style.visibility = "visible";
+                iconaBot.innerHTML = `<i class="fas fa-hand-rock"></i>`;
+            } else if (botScelta === "carta") {
+                document.getElementById("botCarta").style.visibility = "visible";
+                iconaBot.innerHTML = `<i class="fas fa-hand-paper"></i>`;
+            } else if (botScelta === "forbice") {
+                document.getElementById("botForbice").style.visibility = "visible";
+                iconaBot.innerHTML = `<i class="fas fa-hand-scissors"></i>`;
+            }
+
+            document.getElementById("out2").innerHTML = "Morra Bot ha scelto: " + botScelta;
+        }
+
+        
+        function calcolaVincitore() {
+            if (sceltaUtente === "") {
+                document.getElementById("out2").innerHTML = "Per favore, scegli Sasso, Carta o Forbice!";
+                return;
+            }
+
+            if (sceltaUtente === morraArray[numeroCasuale]) {
+                document.getElementById("out2").innerHTML += "<br>Pareggio!";
+            } else if ((sceltaUtente === "sasso" && morraArray[numeroCasuale] === "forbice") ||
+                       (sceltaUtente === "forbice" && morraArray[numeroCasuale] === "carta") ||
+                       (sceltaUtente === "carta" && morraArray[numeroCasuale] === "sasso")) {
+                document.getElementById("out2").innerHTML += "<br>Hai vinto!";
+            } else {
+                document.getElementById("out2").innerHTML += "<br>Hai perso!";
+            }
+        }
+    </script>
+</body>
+</html>
