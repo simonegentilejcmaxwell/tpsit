@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolo Media Voti</title>
+</head>
+<body>
+    <h1>Calcolo Media dei Voti</h1>
+    
+  <!-- Campo per inserire il nome -->  
+    <label for="nome">Inserisci il tuo nome:</label>
+    <input type="text" id="nome" placeholder="Il tuo nome">
+
+    <br><br>
+
+    <!-- Cinque campi per inserire i voti -->
+    <label for="num1">Voto 1:</label>
+    <input type="number" id="num1" placeholder="Voto 1" min="0" max="10">
+
+    <br>
+
+    <label for="num2">Voto 2:</label>
+    <input type="number" id="num2" placeholder="Voto 2" min="0" max="10">
+
+    <br>
+
+    <label for="num3">Voto 3:</label>
+    <input type="number" id="num3" placeholder="Voto 3" min="0" max="10">
+
+    <br>
+
+    <label for="num4">Voto 4:</label>
+    <input type="number" id="num4" placeholder="Voto 4" min="0" max="10">
+
+    <br>
+
+    <label for="num5">Voto 5:</label>
+    <input type="number" id="num5" placeholder="Voto 5" min="0" max="10">
+
+    <br><br>
+
+    <!-- Bottone per calcolare la media -->
+    <button onclick="gestisciCalcolo()">Calcola Media</button>
+
+    <br><br>
+
+    <!-- Sezione per mostrare il risultato -->
+    <div id="result"></div>
+
+    <script>
+        // Funzione per calcolare la media accettando cinque parametri
+        function calcolaMedia(voto1, voto2, voto3, voto4, voto5) {
+            return (voto1 + voto2 + voto3 + voto4 + voto5) / 5;
+        }
+
+        // Funzione per gestire gli input e mostrare il risultato
+        function gestisciCalcolo() {
+            // Leggi il nome e i valori dei voti
+            const nome = document.getElementById('nome').value;
+            const voto1 = parseFloat(document.getElementById('num1').value);
+            const voto2 = parseFloat(document.getElementById('num2').value);
+            const voto3 = parseFloat(document.getElementById('num3').value);
+            const voto4 = parseFloat(document.getElementById('num4').value);
+            const voto5 = parseFloat(document.getElementById('num5').value);
+
+            // Controlla se il nome è vuoto o se i voti non sono numeri validi
+            if (nome === "" || isNaN(voto1) || isNaN(voto2) || isNaN(voto3) || isNaN(voto4) || isNaN(voto5)) {
+                document.getElementById('result').innerText = "Per favore, inserisci il tuo nome e tutti i voti correttamente.";
+                return;
+            }
+
+            // Calcola la media usando la funzione con 5 parametri
+            const media = calcolaMedia(voto1, voto2, voto3, voto4, voto5);
+
+            // Mostra il risultato
+            document.getElementById('result').innerText = `${nome}, la tua media è: ${media.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
