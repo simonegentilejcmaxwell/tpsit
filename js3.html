@@ -1,0 +1,26 @@
+<p id="testo1">Questo è il primo testo da nascondere o riappare.</p> 
+<button onclick="nascondiRiappareTesto('testo1')">Nascondi/Riappare Primo Testo</button>
+
+<p id="testo2">Questo è il secondo testo da nascondere o riappare.</p> 
+<button onclick="nascondiRiappareTesto('testo2')">Nascondi/Riappare Secondo Testo</button>
+
+<p id="testo3">Questo è il terzo testo da nascondere o riappare.</p> 
+<button onclick="nascondiRiappareTesto('testo3')">Nascondi/Riappare Terzo Testo</button>
+
+<p id="testo4">Questo è il quarto testo da nascondere o riappare.</p> 
+<button onclick="nascondiRiappareTesto('testo4')">Nascondi/Riappare Quarto Testo</button>
+
+<p id="testo5">Questo è il quinto testo da nascondere o riappare.</p> 
+<button onclick="nascondiRiappareTesto('testo5')">Nascondi/Riappare Quinto Testo</button>
+
+<script>
+function nascondiRiappareTesto(id) {
+  const testo = document.getElementById(id);
+  
+  if (testo.style.display === "none") { // Verifica se il testo è visibile o nascosto
+    testo.style.display = "block"; // Rende visibile
+  } else {
+    testo.style.display = "none"; // Nasconde
+  }
+}
+</script>
