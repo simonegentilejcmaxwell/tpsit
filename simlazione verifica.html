@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simuleazione verifica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .info {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Numero Casuale</h1>
+        <div id="numero"></div>
+        <div id="pariDispari" class="info"></div>
+        <div id="primo" class="info"></div>
+        <div id="doppio" class="info"></div>
+        <div id="meta" class="info"></div>
+        <div id="complemento" class="info"></div>
+        <div id="somma" class="info"></div>
+        <div id="moltiplicato" class="info"></div>
+        <button onclick="startTimer()">Avvia Temporizzatore</button>
+    </div>
+
+    <script>
+        
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+    
+        function updateInfo(numero) {
+            
+            const pariDispari = (numero % 2 === 0) ? 'Pari' : 'Dispari';
+            
+            const primo = isPrime(numero) ? 'Primo' : 'Non Primo';
+            
+            const doppio = numero * 2;
+            const meta = Math.floor(numero / 2);
+            
+            const complemento = 1000 - numero;
+           
+            const somma = (numero - 1) + (numero + 1) + numero;
+            
+            const moltiplicato = (numero * 3.14).toFixed(2);
+
+            
+            document.getElementById('numero').textContent = `Numero: ${numero}`;
+            document.getElementById('pariDispari').textContent = `Pari o Dispari: ${pariDispari}`;
+            document.getElementById('primo').textContent = `Primo o Non Primo: ${primo}`;
+            document.getElementById('doppio').textContent = `Doppio: ${doppio}`;
+            document.getElementById('meta').textContent = `Meta Intera: ${meta}`;
+            document.getElementById('complemento').textContent = `Complemento (1000 - n): ${complemento}`;
+            document.getElementById('somma').textContent = `Somma al precedente, successivo e al numero: ${somma}`;
+            document.getElementById('moltiplicato').textContent = `Moltiplicato per 3.14: ${moltiplicato}`;
+        }
+
+        
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 1000) + 1;
+        }
+
+        
+        function startTimer() {
+            setInterval(() => {
+                const numero = getRandomNumber();
+                updateInfo(numero);
+            }, 5000); 
+        }
+    </script>
+
+</body>
+</html>
