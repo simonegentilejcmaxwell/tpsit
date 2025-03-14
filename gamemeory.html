@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleria Foto con Bootstrap</title>
+    
+    <!-- Collegamento Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Stile semplice per le immagini */
+        .mia-img {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="grid-container grid-3x3">
+    <h2 class="text-center mb-4">La mia Galleria. Simone Gentile</h2>
+    
+    <!-- Griglia Bootstrap -->
+    <div class="row g-4"> <!-- "g-4" aggiunge spazio tra le colonne -->
+        
+        <!-- Immagine 1 -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <img src="fiori1.jpg" class="mia-img" alt="Foto 1">
+        </div>
+        
+        <!-- Immagine 2 -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <img src="fiori2.jpg" class="mia-img" alt="Foto 2">
+        </div>
+        
+        <!-- Immagine 3 -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <img src="fiori3.jpg" class="mia-img" alt="Foto 3">
+        </div>
+        
+        <!-- Immagine 4 -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <img src="fiori4.jpg" class="mia-img" alt="Foto 4">
+        </div>
+        
+        <!-- Altre immagini... -->
+        <!-- Aggiungi altre 8 immagini seguendo lo stesso schema -->
+        <!-- Immagine 5 -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <img src="fiori1.jpg" class="mia-img" alt="Foto 5">
+        </div>
+        
+        <!-- Immagine 6 -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <img src="fiori2.jpg" class="mia-img" alt="Foto 6">
+        </div>
+        
+        <!-- Continua fino all'immagine 12 -->
+        
+    </div>
+</div>
+</div>
+
+<!-- Script Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
