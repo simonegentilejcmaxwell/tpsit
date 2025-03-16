@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manipolazione Stringhe</title>
+    <script>
+      function calcolaLunghezza(str) {
+        return str.length;
+      }
+
+      function invertiStringa(str) {
+        return str.split("").reverse().join("");
+      }
+
+      function unisciStringhe(str1, str2) {
+        return str1 + str2;
+      }
+
+      function sommaLunghezze(str1, str2) {
+        let lunghezzaTotale = str1.length + str2.length;
+        let messaggio = str2.length > 20 ? "b troppo lunga" : "Lunghezza OK";
+        return `Somma: ${lunghezzaTotale}, Stato: ${messaggio}`;
+      }
+
+      function eseguiOperazioni() {
+        let str1 = document.getElementById("stringa1").value;
+        let str2 = document.getElementById("stringa2").value;
+
+        document.getElementById("lunghezza1").textContent =
+          "Lunghezza Stringa 1: " + calcolaLunghezza(str1);
+        document.getElementById("lunghezza2").textContent =
+          "Lunghezza Stringa 2: " + calcolaLunghezza(str2);
+        document.getElementById("invertita1").textContent =
+          "Stringa 1 Invertita: " + invertiStringa(str1);
+        document.getElementById("invertita2").textContent =
+          "Stringa 2 Invertita: " + invertiStringa(str2);
+        document.getElementById("unite").textContent =
+          "Stringhe Unite: " + unisciStringhe(str1, str2);
+        document.getElementById("somma").textContent = sommaLunghezze(
+          str1,
+          str2
+        );
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Inserisci due stringhe</h2>
+    <input type="text" id="stringa1" placeholder="Inserisci prima stringa" />
+    <input type="text" id="stringa2" placeholder="Inserisci seconda stringa" />
+    <button onclick="eseguiOperazioni()">Calcola</button>
+    <p id="lunghezza1"></p>
+    <p id="lunghezza2"></p>
+    <p id="invertita1"></p>
+    <p id="invertita2"></p>
+    <p id="unite"></p>
+    <p id="somma"></p>
+  </body>
+</html>
